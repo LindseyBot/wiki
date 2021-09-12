@@ -27,21 +27,21 @@ public class SlashManager {
 
     private CommandMeta pokedex() {
         return new CommandBuilder("pokedex", Label.of("commands.pokedex.description"), 1.0)
-                .module(Modules.FUN)
+                .module(Modules.WIKI)
                 .addOption(OptType.STRING, "search", Label.of("commands.pokedex.search"), true)
                 .build();
     }
 
     private CommandMeta define() {
         return new CommandBuilder("define", Label.of("commands.define.description"), 1.0)
-                .module(Modules.FUN)
+                .module(Modules.WIKI)
                 .addOption(OptType.STRING, "word", Label.of("commands.define.word"), true)
                 .build();
     }
 
     private CommandMeta hearthstone() {
         return new CommandBuilder("hearthstone", Label.of("commands.hearthstone.description"), 1.0)
-                .module(Modules.FUN)
+                .module(Modules.WIKI)
                 .addOption(OptType.STRING, "card", Label.of("commands.hearthstone.card"), true)
                 .addOption(OptType.BOOLEAN, "gold", Label.of("commands.hearthstone.gold"), false)
                 .build();
