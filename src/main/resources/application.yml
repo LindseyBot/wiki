@@ -1,0 +1,18 @@
+app:
+  beta: false
+  controller:
+    url: 'http://localhost:8081'
+    token: ''
+    id: 'worker'
+spring:
+  redis:
+    host: localhost
+  datasource:
+    url: jdbc:h2:mem:worker
+    driver-class-name: org.h2.Driver
+    hikari:
+      max-lifetime: 480000
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  rabbitmq:
+    host: localhost

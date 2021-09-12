@@ -1,0 +1,63 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'net.notfab.lindsey'
+version = '0.0.1'
+sourceCompatibility = targetCompatibility = '16'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://maven.notfab.net/Hosted" }
+    maven {
+        url "https://maven.pkg.github.com/LindseyBot/shared"
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+        }
+    }
+}
+
+bootJar {
+    archiveFileName = "${project.name}.${archiveExtension.get()}"
+}
+
+dependencies {
+    implementation('net.notfab.lindsey:shared:0.1.48')
+
+    // Dependencies
+    implementation('org.json:json:20190722')
+    implementation('com.squareup.okhttp3:okhttp:4.9.1')
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.10.1')
+
+    // Spring
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.springframework.boot:spring-boot-starter-data-redis')
+    implementation('org.springframework.boot:spring-boot-starter-amqp')
+    implementation('org.springframework.boot:spring-boot-starter-jdbc')
+
+    // Development
+    compileOnly 'org.projectlombok:lombok'
+
+    // Database
+    runtimeOnly 'com.h2database:h2'
+    implementation('org.mariadb.jdbc:mariadb-java-client')
+    implementation('redis.clients:jedis:3.6.0')
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
