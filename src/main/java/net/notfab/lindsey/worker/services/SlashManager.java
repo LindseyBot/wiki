@@ -14,7 +14,7 @@ public class SlashManager {
 
     public SlashManager(CommandRegistry registry, @Value("${app.beta}") boolean beta) {
         this.register(registry, beta, this.describePokedex());
-        //this.register(registry, beta, this.describeFlip());
+        this.register(registry, beta, this.describeDefine());
         //this.register(registry, beta, this.describeRoll());
     }
 
@@ -32,16 +32,18 @@ public class SlashManager {
                 .build();
     }
 
-    private CommandMeta describeFlip() {
-        return new CommandBuilder("flip", Label.of("commands.flip.description"), 1.0)
+    private CommandMeta describeDefine() {
+        return new CommandBuilder("define", Label.of("commands.define.description"), 1.0)
                 .module(Modules.FUN)
+                .addOption(OptType.STRING, "word", Label.of("commands.define.word"), true)
                 .build();
     }
 
-    private CommandMeta describeRoll() {
-        return new CommandBuilder("roll", Label.of("commands.roll.description"), 1.0)
+    private CommandMeta describeHearthstone() {
+        return new CommandBuilder("hearthstone", Label.of("commands.hearthstone.description"), 1.0)
                 .module(Modules.FUN)
-                .addOption(OptType.INT, "sides", Label.of("commands.roll.sides"), false)
+                .addOption(OptType.INT, "sides", Label.of("commands.hearthstone.sides"), false)
+                .guilds(213044545825406976L)
                 .build();
     }
 

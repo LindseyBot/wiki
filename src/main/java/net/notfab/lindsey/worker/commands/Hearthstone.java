@@ -18,9 +18,9 @@ import java.util.Random;
 public class Hearthstone {
 
     @RabbitListener(bindings = {@QueueBinding(
-            value = @Queue(value = "commands.flip", autoDelete = "true"),
+            value = @Queue(value = "commands.hearthstone", autoDelete = "true"),
             exchange = @Exchange("commands"),
-            key = {"flip"}
+            key = {"hearthstone"}
     )})
     public MessageResponse onCommand(@Payload CommandRequest event) {
         Random gem = new Random();

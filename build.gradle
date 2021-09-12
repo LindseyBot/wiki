@@ -32,6 +32,7 @@ bootJar {
 }
 
 dependencies {
+    implementation('org.jsoup:jsoup:1.14.2')
     implementation('net.notfab.lindsey:shared:0.1.48')
 
     // Dependencies
