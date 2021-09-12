@@ -4,4 +4,4 @@ LABEL maintainer="git@notfab.net"
 
 COPY build/libs/*.jar /opt/
 
-CMD ["java", "-jar", "/opt/fun.jar"]
+CMD ["java", "-jar", "/opt/wiki.jar"]
