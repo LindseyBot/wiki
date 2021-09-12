@@ -49,7 +49,7 @@ public class Pokedex {
                 return new MessageResponse(Label.of("commands.pokedex.unknown"));
             }
         } catch (IOException ex) {
-            return new MessageResponse(Label.of("commands.pokedex.unknown"));
+            return new MessageResponse(Label.of("internal.error"));
         }
         JSONObject obj = new JSONObject(str);
         JSONArray types = obj.getJSONArray("types");
